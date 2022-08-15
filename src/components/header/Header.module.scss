@@ -1,0 +1,13 @@
+.name{
+    width: 100%;
+    margin-top: clamp(40px,2rem,64px);
+    text-align: center;
+    font-size: 3.5em;
+    transition: all 1s;
+    color: #ccc;
+}
+
+.title:hover .name{
+    rotate: 30deg;
+    color:#fff;
+}
