@@ -1,5 +1,5 @@
 //SCSS
-import './App.scss';
+//import './App.scss';
 
 //Components
 import Header from './components/header/Header';

@@ -15,15 +15,14 @@
         }
     }
     .wordContainer{
-        margin: 1.5em;
-        padding: 1.5em;
-        border: 25px solid;
+        min-height: 40px;
+        border: 10px solid;
         display: flex;
-
+        padding: 1em 1em;
         & span{
-            font-size:4rem;
+            font-size: 2rem;
             border: 3px solid #000;
-        }
+        }        
     }
 }
 
