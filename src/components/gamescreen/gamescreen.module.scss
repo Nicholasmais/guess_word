@@ -9,20 +9,61 @@
     }
     .h3{
         margin-top: 0px;
-
         & span{
             color:goldenrod;
         }
     }
     .wordContainer{
-        min-height: 40px;
+        height: 40px;
         border: 5px solid;
         display: flex;
         padding: 1em 1em;
         & span{
             font-size: 2rem;
             border: 3px solid #000;
+            background-color: rgb(193, 179, 233);
+            color: #000;
+            text-transform: uppercase;
+            padding: 0 0.25em;
         }        
+    }
+    .letterContainer{
+        & p{
+            display: flex;
+            flex-direction: row;
+
+            & span{
+                margin-left: 0.5em;
+            }
+        }
+        & span{
+            display: flex;
+            justify-content: space-between;
+            & input{
+                margin: auto;
+                width: 10px;
+                height: 10px;
+                padding: 0.5em;
+                border-left-color: blue;
+                border-top-color: yellow;
+                border-right-color: red;
+                border-bottom-color: green;
+                display: flex;
+                text-align: center;
+                justify-content: center;    
+                &:focus{
+                    outline: none;
+                }
+            }
+            & button{
+                margin-left: 1em;
+            }
+        }
+    }
+    .wrongLetterContainer{
+        & p{
+            margin-bottom: 0px;
+       }
     }
 }
 

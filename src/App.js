@@ -43,9 +43,8 @@ function App() {
   const pickWordAndcategory = () => {
     const categories = Object.keys(words);
     const category = categories[Math.floor(Math.random() * categories.length)];
-    const word = words[category][Math.floor(Math.random() * Object.keys(words[category]).length)];
+    const word = words[category][Math.floor(Math.random() * Object.keys(words[category]).length)].toLowerCase();
    
-
     return {category,word};
   }
 

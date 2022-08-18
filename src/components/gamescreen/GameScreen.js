@@ -3,17 +3,46 @@ import s from "./gamescreen.module.scss";
 
 const GameScreen = ({verifyLetter, randomPick}) => {
     let {pickedCategory, pickedWord} = randomPick;
-    const [word, setWords] = useState([]);
-    const [wordPrint, setWordPrint] = useState([]);
+    const [wrongWord, setWrongWord] = useState([]);
+    const [wrongWordPrint, setWrongWordPrint] = useState([]);
+
+    const [wordDisplay, setWordDisplay] = useState(Array(pickedWord.length).fill("_"));
+    const [showWord, setShowWord] = useState(Array(pickedWord.length).fill("_"));
+
+    const [tries, setTries] = useState(7);
+    const [triesPrint, setTriesPrint] = useState(7);
 
     const handleChange = (e) => {
         e.preventDefault();
-        setWords(oldWords => [...oldWords,e.target.value]);
+        let refreshDisplay = showWord.map((value) => value);
+        setWordDisplay(Array(pickedWord.length).fill("_"));
+
+        if (pickedWord.includes(e.target.value)){
+            for (let index = 0; index < pickedWord.length; index++){
+                if (pickedWord[index]===e.target.value){
+                    refreshDisplay.forEach((item, i) => {if (i===index){refreshDisplay[i] = e.target.value}})
+                    setWordDisplay(refreshDisplay);
+                }
+            }
+        }
+        else{
+            setWrongWord(prevletters => [...prevletters,e.target.value]);
+            setTries(prevState => prevState -= 1);
+        }
     }
 
     const handleGuess = (e) =>{
         e.preventDefault();
-        setWordPrint(word);
+        if (tries === 0){
+            verifyLetter();
+        }
+        setShowWord(wordDisplay);
+        if (wordDisplay.join("") === pickedWord){
+            verifyLetter();
+        }
+        setTriesPrint(tries);
+        setWrongWordPrint(wrongWord);
+
     }
 
     return (
@@ -24,18 +53,20 @@ const GameScreen = ({verifyLetter, randomPick}) => {
         <h3 className={s.h3}>Dica: <span>{pickedCategory}</span></h3>
 
         <div className={s.wordContainer}>
-                {wordPrint.map((palavra,index) => {return <span key={index} className={s.letter}>{palavra}</span>})}
+                {showWord.map((palavra,index) => {return <span key={index} className={s.letter}>{palavra}</span>})}
         </div>
 
         <div className={s.letterContainer}>
-            <p>Tente adivinhar uma letra:</p>
+            <p>Tente adivinhar uma letra:<span>({triesPrint} tentativas)</span></p>
+            <span>
                 <input type="text" name='letter' onChange={handleChange} maxLength="1" required/>
                 <button onClick={handleGuess}>Adivinhar</button>
+            </span>
         </div>
 
         <div className={s.wrongLetterContainer}>
             <p>Letra erradas:</p>
-            <span>a, b, c, d</span>
+            <span>{wrongWordPrint}</span>
         </div>
         <div>
         <button onClick={verifyLetter}>Terminar Jogo</button>
