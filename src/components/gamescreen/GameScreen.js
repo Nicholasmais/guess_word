@@ -15,7 +15,9 @@ const GameScreen = ({verifyLetter, randomPick}) => {
     const handleChange = (e) => {
         e.preventDefault();
         let refreshDisplay = showWord.map((value) => value);
-        setWordDisplay(Array(pickedWord.length).fill("_"));
+        console.log(pickedWord);
+        console.log(wordDisplay);
+        console.log(showWord);
 
         if (pickedWord.includes(e.target.value)){
             for (let index = 0; index < pickedWord.length; index++){
@@ -29,10 +31,7 @@ const GameScreen = ({verifyLetter, randomPick}) => {
             setWrongWord(prevletters => [...prevletters,e.target.value]);
             setTries(prevState => prevState -= 1);
         }
-    }
 
-    const handleGuess = (e) =>{
-        e.preventDefault();
         if (tries === 0){
             verifyLetter();
         }
@@ -42,8 +41,8 @@ const GameScreen = ({verifyLetter, randomPick}) => {
         }
         setTriesPrint(tries);
         setWrongWordPrint(wrongWord);
-
     }
+
 
     return (
     <div className={s.divBody}>
@@ -59,8 +58,10 @@ const GameScreen = ({verifyLetter, randomPick}) => {
         <div className={s.letterContainer}>
             <p>Tente adivinhar uma letra:<span>({triesPrint} tentativas)</span></p>
             <span>
-                <input type="text" name='letter' onChange={handleChange} maxLength="1" required/>
-                <button onClick={handleGuess}>Adivinhar</button>
+                <form onSubmit={handleChange}>
+                    <input type="text" name='letter' onChange={(e)=>setWordDisplay(Array(pickedWord.length).fill("_"))} maxLength="1" required/>
+                    <button type='submit'>Adivinhar</button>
+                </form>
             </span>
         </div>
 
