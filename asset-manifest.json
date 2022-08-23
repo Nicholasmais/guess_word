@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/curriculo/guess_word/static/css/main.80f72dc3.css",
+    "main.js": "/curriculo/guess_word/static/js/main.88a49df9.js",
+    "index.html": "/curriculo/guess_word/index.html",
+    "main.80f72dc3.css.map": "/curriculo/guess_word/static/css/main.80f72dc3.css.map",
+    "main.88a49df9.js.map": "/curriculo/guess_word/static/js/main.88a49df9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.80f72dc3.css",
+    "static/js/main.88a49df9.js"
+  ]
+}
