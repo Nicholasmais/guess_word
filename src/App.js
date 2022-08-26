@@ -12,6 +12,7 @@ import {useCallback, useEffect, useState} from 'react';
 
 //Data
 import {wordsList} from "./data/words";
+import { ScoreContext } from './Contexts/ScoreContext';
 
 const stages = [
 {id:1, name:"Start"},
@@ -26,17 +27,17 @@ function App() {
   const [pickedWord, setPickedWord] = useState("");
   const [pickedCategory, setPickedCategory] = useState("");
   const [letters, setLetters] = useState([]);
-
-  const renderPage = () =>{
+  const [pontos, setPontos] = useState(0);
+ const renderPage = () =>{
     switch (gameStage){
        case "Start":
-         return <StartScreen startGame = {startGame}></StartScreen>;
+         return <ScoreContext.Provider value={{pontos, setPontos}}><StartScreen startGame = {startGame}></StartScreen> </ScoreContext.Provider> ;
 
        case "Game":
-         return <GameScreen verifyLetter = {verifyLetter} randomPick = {{pickedCategory, pickedWord}}></GameScreen>
+         return <ScoreContext.Provider value={{pontos, setPontos}}> <GameScreen end = {end} randomPick = {{pickedCategory, pickedWord}}></GameScreen></ScoreContext.Provider> 
 
        case "End":
-         return <EndScreen retry = {retry}></EndScreen>
+         return <ScoreContext.Provider value={{pontos, setPontos}}> <EndScreen retry = {retry}></EndScreen></ScoreContext.Provider> 
  }
 }
 
@@ -59,7 +60,7 @@ function App() {
     setGameStage(stages[1].name);
   }
 
-  const verifyLetter = ()=>{
+  const end = ()=>{
     setGameStage(stages[2].name);
   }
 

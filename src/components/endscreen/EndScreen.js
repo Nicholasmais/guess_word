@@ -1,4 +1,5 @@
 import React from 'react'
+import { ScoreContext } from '../../Contexts/ScoreContext'
 
 const EndScreen = ({retry}) => {
   return (
