@@ -15,12 +15,11 @@ const GameScreen = ({end, randomPick}) => {
     const {pontos, setPontos} = useContext(ScoreContext);
 
     const terminar = () => {
-        end();
+        end(null);
     }
 
     const handleChange = (e) => {
         e.preventDefault();
-        console.log(pontos);
         let refreshDisplay = wordDisplay.map((value) => value);
 
         if (pickedWord.includes(guessLetter)){
@@ -38,11 +37,11 @@ const GameScreen = ({end, randomPick}) => {
         }
 
         if (tries === 0){
-            terminar();
+            end(0);
         }
         if (refreshDisplay.join("") === pickedWord){
             setPontos(lastScore => lastScore += 1);
-            terminar();
+            end(1);
         }
         setTriesPrint(tries);
 

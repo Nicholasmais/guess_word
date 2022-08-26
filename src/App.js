@@ -28,6 +28,8 @@ function App() {
   const [pickedCategory, setPickedCategory] = useState("");
   const [letters, setLetters] = useState([]);
   const [pontos, setPontos] = useState(0);
+  const [win, setWin] = useState(null);
+
  const renderPage = () =>{
     switch (gameStage){
        case "Start":
@@ -37,7 +39,7 @@ function App() {
          return <ScoreContext.Provider value={{pontos, setPontos}}> <GameScreen end = {end} randomPick = {{pickedCategory, pickedWord}}></GameScreen></ScoreContext.Provider> 
 
        case "End":
-         return <ScoreContext.Provider value={{pontos, setPontos}}> <EndScreen retry = {retry}></EndScreen></ScoreContext.Provider> 
+         return <ScoreContext.Provider value={{pontos, setPontos}}> <EndScreen retry = {retry} win = {win}></EndScreen></ScoreContext.Provider> 
  }
 }
 
@@ -60,7 +62,8 @@ function App() {
     setGameStage(stages[1].name);
   }
 
-  const end = ()=>{
+  const end = (win)=>{
+    setWin(win);
     setGameStage(stages[2].name);
   }
 
