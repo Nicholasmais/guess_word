@@ -1,10 +1,17 @@
-import React from 'react'
-import { ScoreContext } from '../../Contexts/ScoreContext'
+import React, {useContext, useEffect} from 'react';
+import { ScoreContext } from '../../Contexts/ScoreContext';
+import s from "./EndScreen.module.scss";
 
 const EndScreen = ({retry, win}) => {
-  
+  const {pontos, setPontos} = useContext(ScoreContext);
+
+  useEffect( () =>{
+  if (win === null){
+    setPontos(0);}}
+    , []);
+
   return (
-    <div>EndScreen
+    <div className={s.mainDiv}>
         <div>{win !== null ? win === 1 ? <div style={{color:'green'}}>Ganhou</div>:<div style={{color:'red'}}>Perdeu</div> : "Saiu do jogo"}</div>
         <button onClick={retry}>Tentar novamente</button>
     </div>

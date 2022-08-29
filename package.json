@@ -1,5 +1,6 @@
 {
   "name": "guess_word",
+  "homepage": "https://nicholasmais.github.io/guess_word/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,7 +15,6 @@
     "sass": "^1.54.4",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://nicholasmais.github.io/curriculo/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

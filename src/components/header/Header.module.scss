@@ -1,13 +1,17 @@
-.name{
-    width: 100%;
-    margin-top: clamp(40px,2rem,64px);
-    text-align: center;
-    font-size: 3.5em;
-    transition: all 1s;
-    color: #ccc;
-}
+.title{
+    padding: clamp(40px,2rem,64px);
 
-.title:hover .name{
-    rotate: 30deg;
-    color:#fff;
+    .name{
+        width: 100%;
+        
+        text-align: center;
+        font-size: 3.5em;
+        transition: all 1s;
+        color: #ccc;
+    }
+
+    &:hover .name{
+        rotate: 30deg;
+        color:#fff;
+    }
 }

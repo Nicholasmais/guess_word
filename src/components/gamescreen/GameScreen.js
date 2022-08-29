@@ -5,9 +5,9 @@ import { ScoreContext } from '../../Contexts/ScoreContext'
 const GameScreen = ({end, randomPick}) => {
     let {pickedCategory, pickedWord} = randomPick;
     const [guessLetter, setGuessLetter] = useState("");
-    const [wrongWord, setWrongWord] = useState([]);
+    const [wrongWord, setWrongWord] = useState([""]);
 
-    const [wordDisplay, setWordDisplay] = useState(Array(pickedWord.length).fill("_"));
+    const [wordDisplay, setWordDisplay] = useState(Array(pickedWord.length).fill(""));
 
     const [tries, setTries] = useState(7);
     const [triesPrint, setTriesPrint] = useState(7);
@@ -61,17 +61,18 @@ const GameScreen = ({end, randomPick}) => {
 
         <div className={s.letterContainer}>
             <p>Tente adivinhar uma letra:<span>({triesPrint} tentativas)</span></p>
-            <span>
+            <div>
                 <form onSubmit={handleChange}>
-                    <input type="text" name='letter' onChange={(e)=>{setGuessLetter(e.target.value);}} maxLength="1" required/>
+                    <input type="text" name='letter' onChange={(e)=>{setGuessLetter(e.target.value.toLowerCase());}} maxLength="1" required/>
                     <button type='submit'>Adivinhar</button>
                 </form>
-            </span>
+            </div>
         </div>
 
         <div className={s.wrongLetterContainer}>
-            <p>Letra erradas:</p>
+            <div>Letra erradas: 
             {wrongWord.map((letter, i) => <span key={i}>{letter}</span>)}
+            </div>
         </div>
         <div>
         <button onClick={terminar}>Terminar Jogo</button>
