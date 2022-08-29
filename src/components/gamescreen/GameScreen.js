@@ -56,7 +56,10 @@ const GameScreen = ({end, randomPick}) => {
         <h3 className={s.h3}>Dica: <span>{pickedCategory}</span></h3>
 
         <div className={s.wordContainer}>
-                {wordDisplay.map((palavra,index) => {return <span key={index} className={s.letter}>{palavra}</span>})}
+            {wordDisplay.map((palavra,index) => {return <span key={index}
+             style={{width: `${60 / pickedWord.length}vw`}}>
+                {palavra}
+            </span>})}
         </div>
 
         <div className={s.letterContainer}>

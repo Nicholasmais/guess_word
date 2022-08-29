@@ -21,9 +21,8 @@
         display: flex;
         padding: 1em 1em;
         & span{
-            width: clamp(20px,38px,40px);
-            height: clamp(20px,40px,40px);
-            font-size: 2rem;
+            height: clamp(20px,2rem,40px);
+            font-size: 1rem;
             display: flex;
             justify-content: center;
             align-items: center;
