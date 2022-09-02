@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/guess_word/static/css/main.499ab814.css",
-    "main.js": "/guess_word/static/js/main.f90ec0e0.js",
+    "main.css": "/guess_word/static/css/main.dcbb3105.css",
+    "main.js": "/guess_word/static/js/main.422694cf.js",
     "index.html": "/guess_word/index.html",
-    "main.499ab814.css.map": "/guess_word/static/css/main.499ab814.css.map",
-    "main.f90ec0e0.js.map": "/guess_word/static/js/main.f90ec0e0.js.map"
+    "main.dcbb3105.css.map": "/guess_word/static/css/main.dcbb3105.css.map",
+    "main.422694cf.js.map": "/guess_word/static/js/main.422694cf.js.map"
   },
   "entrypoints": [
-    "static/css/main.499ab814.css",
-    "static/js/main.f90ec0e0.js"
+    "static/css/main.dcbb3105.css",
+    "static/js/main.422694cf.js"
   ]
 }
