@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import s from "./gamescreen.module.scss";
 import { ScoreContext } from '../../Contexts/ScoreContext'
 import {ToastContainer, toast } from 'react-toastify';
@@ -16,6 +16,12 @@ const GameScreen = ({end, randomPick}) => {
 
     const {pontos, setPontos} = useContext(ScoreContext);
 
+    useEffect(() => {
+        if (tries === 0){
+            end(0);
+        }
+    }, [tries]);
+
     const terminar = () => {
         end(null);
     }
@@ -26,11 +32,11 @@ const GameScreen = ({end, randomPick}) => {
 
     const handleChange = (e) => {
         e.preventDefault();
-
+ 
         let refreshDisplay = wordDisplay.map((value) => value);
 
         if (!wrongWord.includes(guessLetter) && !refreshDisplay.includes(removeAcento(guessLetter))){
-            if (pickedWord.includes(guessLetter)){
+            if (pickedWord.split("").map(p => removeAcento(p)).includes(guessLetter)){
                 for (let index = 0; index < pickedWord.length; index++){
                     if (removeAcento(pickedWord[index])===removeAcento(guessLetter)){
                         refreshDisplay.forEach((item, i) => {if (i===index){refreshDisplay[i] = pickedWord[index]}})
@@ -40,16 +46,13 @@ const GameScreen = ({end, randomPick}) => {
             }
             else{
                 setWrongWord(prevState => [...prevState,guessLetter]);
-                setTries(prevState => prevState -= 1);
-            }    
-        }
+                setTries(prevState => prevState -= 1);      
+                }    
+            }
         else{
             toast.error("Letra já verificada!", {autoClose:1000});
         }
-        
-        if (tries === 0){
-            end(0);
-        }
+
         if (refreshDisplay.join("") === pickedWord){
             setPontos(lastScore => lastScore += 1);
             end(1);
@@ -77,7 +80,7 @@ const GameScreen = ({end, randomPick}) => {
             <p>Tente adivinhar uma letra:<span>({tries} tentativas)</span></p>
             <div>
                 <form onSubmit={handleChange}>
-                    <input type="text" name='letter' onChange={(e)=>{setGuessLetter(e.target.value.toLowerCase());}} maxLength="1" required/>
+                    <input type="text" name='letter' onChange={(e)=>{setGuessLetter(e.target.value.toLowerCase());}} maxLength="1" pattern="^[a-zA-Z]+$" required/>
                     <button type='submit'>Adivinhar</button>
                 </form>
             </div>
