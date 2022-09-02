@@ -23,6 +23,8 @@
         & span{
             height: clamp(20px,2rem,40px);
             font-size: 1rem;
+            width: 40px;
+            height: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -72,4 +74,3 @@
     padding: 1em;
     }
 }
-

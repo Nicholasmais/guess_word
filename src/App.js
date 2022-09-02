@@ -39,7 +39,7 @@ function App() {
          return <ScoreContext.Provider value={{pontos, setPontos}}> <GameScreen end = {end} randomPick = {{pickedCategory, pickedWord}}></GameScreen></ScoreContext.Provider> 
 
        case "End":
-         return <ScoreContext.Provider value={{pontos, setPontos}}> <EndScreen retry = {retry} win = {win}></EndScreen></ScoreContext.Provider> 
+         return <ScoreContext.Provider value={{pontos, setPontos}}> <EndScreen retry = {retry} win = {win} word = {pickedWord}></EndScreen></ScoreContext.Provider> 
  }
 }
 
